@@ -1,0 +1,48 @@
+include:
+  - ./docker-compose.yml
+  - ./idm/external-pocketid.yml
+  - ./external-proxy/opencloud.yml
+  - ./external-proxy/collabora.yml
+  - ./weboffice/collabora.yml
+
+networks:
+  web:
+    external: true
+
+services:
+  opencloud:
+    networks:
+      web:
+    volumes:
+      #- ./config/opencloud/csp.yaml:/etc/opencloud/csp.yaml
+      #- ./config/opencloud/banned-password-list.txt:/etc/opencloud/banned-password-list.txt
+      # configure the .env file to use own paths instead of docker internal volumes
+      - /apps/opencloud/oc-config:/etc/opencloud
+      - /apps/opencloud/oc-data:/var/lib/opencloud
+      - /apps/opencloud/oc-config/apps:/var/lib/opencloud/web/assets/apps
+    labels:
+      - "traefik.enable=true"
+      # define middleware here, to make sure its loaded with the first defined container (opencloud)
+      # if defined in the traefik container with a disabled dashboard it won't be loaded fast enough
+      - "traefik.http.middlewares.hsts-header.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.hsts-header.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.hsts-header.headers.stsPreload=true"
+      - "traefik.http.middlewares.hsts-header.headers.forceSTSHeader=true"
+      - "traefik.http.routers.opencloud-rtr.entrypoints=websecure"
+      - "traefik.http.routers.opencloud.rule=Host(`${OC_DOMAIN:-cloud.opencloud.test}`)"
+      - "traefik.http.routers.opencloud-rtr.service=opencloud-svc"
+      - "traefik.http.routers.opencloud-rtr.middlewares=hsts-header"
+      - "traefik.http.services.opencloud-svc.loadbalancer.server.port=9200"
+      #- "traefik.http.routers.opencloud.${TRAEFIK_SERVICES_TLS_CONFIG}"
+      
+  collabora:
+    networks:
+      web:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.collabora-rtr.entrypoints=websecure"
+      - "traefik.http.routers.collabora-rtr.rule=Host(`${COLLABORA_DOMAIN:-collabora.opencloud.test}`)"
+     # - "traefik.http.routers.collabora-rtr.${TRAEFIK_SERVICES_TLS_CONFIG}"
+      - "traefik.http.routers.collabora-rtr.service=collabora-svc"
+      - "traefik.http.routers.collabora-rtr.middlewares=hsts-header"
+      - "traefik.http.services.collabora-svc.loadbalancer.server.port=9980"
