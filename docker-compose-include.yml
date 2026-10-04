@@ -1,8 +1,5 @@
 include:
   - ./docker-compose.yml
-  - ./idm/external-pocketid.yml
-  - ./external-proxy/opencloud.yml
-  - ./external-proxy/collabora.yml
   - ./weboffice/collabora.yml
 
 networks:
