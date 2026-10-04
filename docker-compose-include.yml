@@ -28,7 +28,7 @@ services:
       - "traefik.http.routers.opencloud-rtr.entrypoints=websecure"
       - "traefik.http.routers.opencloud.rule=Host(`${OC_DOMAIN:-cloud.opencloud.test}`)"
       - "traefik.http.routers.opencloud-rtr.service=opencloud-svc"
-      - "traefik.http.routers.opencloud-rtr.middlewares=hsts-header"
+      - "traefik.http.routers.opencloud-rtr.middlewares=chain-no-auth@file,hsts-header"
       - "traefik.http.services.opencloud-svc.loadbalancer.server.port=9200"
       #- "traefik.http.routers.opencloud.${TRAEFIK_SERVICES_TLS_CONFIG}"
       
@@ -41,5 +41,5 @@ services:
       - "traefik.http.routers.collabora-rtr.rule=Host(`${COLLABORA_DOMAIN:-collabora.opencloud.test}`)"
      # - "traefik.http.routers.collabora-rtr.${TRAEFIK_SERVICES_TLS_CONFIG}"
       - "traefik.http.routers.collabora-rtr.service=collabora-svc"
-      - "traefik.http.routers.collabora-rtr.middlewares=hsts-header"
+      - "traefik.http.routers.collabora-rtr.middlewares=chain-no-auth@file,hsts-header"
       - "traefik.http.services.collabora-svc.loadbalancer.server.port=9980"
