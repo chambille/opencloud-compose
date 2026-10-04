@@ -14,9 +14,9 @@ services:
       #- ./config/opencloud/csp.yaml:/etc/opencloud/csp.yaml
       #- ./config/opencloud/banned-password-list.txt:/etc/opencloud/banned-password-list.txt
       # configure the .env file to use own paths instead of docker internal volumes
-      - /apps/opencloud/oc-config:/etc/opencloud
-      - /apps/opencloud/oc-data:/var/lib/opencloud
-      - /apps/opencloud/oc-config/apps:/var/lib/opencloud/web/assets/apps
+      - /apps/opencloud2/oc-config:/etc/opencloud
+      - /apps/opencloud2/oc-data:/var/lib/opencloud
+      - /apps/opencloud2/oc-config/apps:/var/lib/opencloud/web/assets/apps
     labels:
       - "traefik.enable=true"
       # define middleware here, to make sure its loaded with the first defined container (opencloud)
