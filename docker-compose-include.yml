@@ -13,6 +13,8 @@ services:
   opencloud:
     networks:
       web:
+    # lance manuellement la colaboration
+    command: ["-c", "opencloud init || true; opencloud collaboration server & opencloud server"]
     volumes:
       #- ./config/opencloud/csp.yaml:/etc/opencloud/csp.yaml
       #- ./config/opencloud/banned-password-list.txt:/etc/opencloud/banned-password-list.txt
