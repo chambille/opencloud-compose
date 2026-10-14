@@ -3,7 +3,7 @@ services:
   opencloud:
     environment:
       WEB_OPTION_YJS_SERVER_URL: wss://${OC_DOMAIN:-cloud.opencloud.test}${TRAEFIK_PORT_HTTPS:+:}${TRAEFIK_PORT_HTTPS:-}/yjs
-    volumes:
+    #volumes:
       # the /yjs route is configured in the proxy
       #- /apps/opencloud/config/opencloud/proxy.yaml:/etc/opencloud/proxy.yaml
   yjs:
