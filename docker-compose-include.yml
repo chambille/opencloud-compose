@@ -20,6 +20,8 @@ services:
       - /apps/opencloud2/oc-config:/etc/opencloud
       - /apps/opencloud2/oc-data:/var/lib/opencloud
       - /apps/opencloud2/oc-config/apps:/var/lib/opencloud/web/assets/apps
+      # yjs route
+      - /apps/opencloud2/config/opencloud/proxy.yaml:/etc/opencloud/proxy.yaml
     labels:
       - "traefik.enable=true"
       # define middleware here, to make sure its loaded with the first defined container (opencloud)
