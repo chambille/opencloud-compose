@@ -16,7 +16,7 @@ services:
     # lance manuellement la colaboration
     command: ["-c", "opencloud init || true; opencloud server & (sleep 20; opencloud collaboration server)"]
 
-    environnment:
+    environment:
       # Disable the built-in IDP
       OC_EXCLUDE_RUN_SERVICES=idp
       
