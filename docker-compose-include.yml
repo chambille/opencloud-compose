@@ -21,13 +21,13 @@ services:
       OC_EXCLUDE_RUN_SERVICES: idp
       
       # External OIDC issuer
-      OC_OIDC_ISSUER: 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}'
-      PROXY_OIDC_ISSUER: 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}'
+      OC_OIDC_ISSUER: https://${IDP_DOMAIN:-cloud.opencloud.test}${TRAEFIK_PORT_HTTPS:+:}${TRAEFIK_PORT_HTTPS:-}
+      PROXY_OIDC_ISSUER: https://${IDP_DOMAIN:-cloud.opencloud.test}${TRAEFIK_PORT_HTTPS:+:}${TRAEFIK_PORT_HTTPS:-}
       
       # Web frontend client (Client ID of the web frontend client)
       WEB_OIDC_CLIENT_ID: $OC_OIDC_CLIENT_ID
-      WEB_OIDC_AUTHORITY: 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}'
-      WEB_OIDC_METADATA_URL: 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/.well-known/openid-configuration'
+      WEB_OIDC_AUTHORITY: https://${IDP_DOMAIN:-cloud.opencloud.test}${TRAEFIK_PORT_HTTPS:+:}${TRAEFIK_PORT_HTTPS:-}
+      WEB_OIDC_METADATA_URL: https://${IDP_DOMAIN:-cloud.opencloud.test}${TRAEFIK_PORT_HTTPS:+:}${TRAEFIK_PORT_HTTPS:-}/.well-known/openid-configuration
       WEB_OIDC_RESPONSE_TYPE: code
       WEB_OIDC_SCOPE: openid profile email groups
       
