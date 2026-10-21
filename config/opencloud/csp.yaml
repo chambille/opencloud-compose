@@ -9,7 +9,7 @@ directives:
     - 'https://${IDP_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}'
     - 'wss://${IDP_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}'
     - 'https://raw.githubusercontent.com/opencloud-eu/awesome-apps/'
-    - 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${IDP_DOMAIN|pocketid.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
     - 'https://update.opencloud.eu/'
     - 'https://tile.openstreetmap.org/'
   default-src:
@@ -23,11 +23,11 @@ directives:
     - 'blob:'
     - 'https://embed.diagrams.net/'
     # In contrary to bash and docker the default is given after the | character
-    - 'https://${COLLABORA_DOMAIN|collabora.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
-    - 'https://${EURO_OFFICE_DOMAIN|euro-office.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${COLLABORA_DOMAIN|collabora.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${EURO_OFFICE_DOMAIN|euro-office.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
     # This is needed for the external-sites web extension when embedding sites
     - 'https://docs.opencloud.eu'
-    - 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${IDP_DOMAIN|pocketid.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
   img-src:
     - '''self'''
     - 'data:'
@@ -35,8 +35,8 @@ directives:
     - 'https://raw.githubusercontent.com/opencloud-eu/awesome-apps/'
     - 'https://tile.openstreetmap.org/'
     # In contrary to bash and docker the default is given after the | character
-    - 'https://${COLLABORA_DOMAIN|collabora.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
-    - 'https://${EURO_OFFICE_DOMAIN|euro-office.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${COLLABORA_DOMAIN|collabora.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${EURO_OFFICE_DOMAIN|euro-office.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
   manifest-src:
     - '''self'''
   media-src:
@@ -47,7 +47,7 @@ directives:
   script-src:
     - '''self'''
     - '''unsafe-inline'''
-    - 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${IDP_DOMAIN|pocketid.chamb.duckdns.org}${TRAEFIK_PORT_HTTPS}/'
   style-src:
     - '''self'''
     - '''unsafe-inline'''
