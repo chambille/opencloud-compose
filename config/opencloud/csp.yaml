@@ -6,6 +6,8 @@ directives:
     - 'blob:'
     - 'https://${COMPANION_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
     - 'wss://${COMPANION_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
+    - 'https://${IDP_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}'
+    - 'wss://${IDP_DOMAIN|companion.opencloud.test}${TRAEFIK_PORT_HTTPS}'
     - 'https://raw.githubusercontent.com/opencloud-eu/awesome-apps/'
     - 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
     - 'https://update.opencloud.eu/'
